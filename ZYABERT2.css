@@ -1,4 +1,10 @@
-/* ===== Reset ===== */
+/* ================================================================
+   CSS STYLESHEET - WEB AGENTUR
+   Struktur: Reset -> Variablen -> Basis -> Komponenten -> Sektionen -> Media Queries
+================================================================ 
+*/
+
+/* ===== 1. RESET & BASIS SETTINGS ===== */
 *,
 *::before,
 *::after {
@@ -7,37 +13,39 @@
   padding: 0;
 }
 
-/* ===== Variablen ===== */
 :root {
-  /* Hauptfarben */
-  --primary: #6a0dad;       /* sattes Lila */
-  --accent: #00bcd4;        /* frisches Türkis */
-  --accent2: #ff4081;       /* knalliges Pink */
-  --highlight: #ffb74d;     /* warme Highlights */
+  /* Farbschema */
+  --primary: #6a0dad;        /* Sattes Lila */
+  --accent: #00bcd4;         /* Frisches Türkis */
+  --accent2: #ff4081;        /* Knalliges Pink */
+  --highlight: #ffb74d;      /* Warme Highlights */
   
-  /* Neutral / Text */
+  /* Neutralfarben & Text */
   --text-light: #ffffff;
   --gray: #666666;
+  --bg-dark: #111111;
   --bg-light: #f5f5f7;
-
-  /* Overlay */
+  --card-bg: #1c1c1c;
+  
+  /* Overlays */
   --dark-overlay: rgba(0, 0, 0, 0.5);
 }
 
-/* ===== Basis ===== */
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; /* 1rem = 10px für einfachere Umrechnung */
   scroll-behavior: smooth;
+  background-color: var(--bg-dark);
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
+  color: var(--text-light);
+  background-color: var(--bg-dark);
 }
 
-h1 {
-  font-size: 3rem;
-}
+/* ===== 2. TYPOGRAFIE ===== */
+h1 { font-size: 3rem; }
 
 h2 {
   font-size: 2.5rem;
@@ -45,6 +53,7 @@ h2 {
   margin-bottom: 3rem;
   border-bottom: 3px solid var(--primary);
   padding-bottom: 5px;
+  color: var(--text-light);
 }
 
 p {
@@ -52,35 +61,9 @@ p {
   margin-bottom: 2rem;
 }
 
-/* ===== Hero Bereich ===== */
-.hero {
-  background:
-    linear-gradient(var(--dark-overlay), var(--dark-overlay)),
-    url("https://www.kinoundco.de/media/cache/newsimg/media/Plankton%20-%20%C2%A9%20Netflix.jpg") center/cover no-repeat;
-  color: var(--text-light);
-  padding: 8rem 2rem;
-  text-align: center;
-}
+/* ===== 3. KOMPONENTEN (Wiederverwendbar) ===== */
 
-.agentur-name {
-  font-family: monospace;
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.8;
-  display: inline-block;
-  border-radius: 5px;
-}
-
-.anfrage{
-  border-radius: 100%;
-}
-
-.angebot {
-  max-width: 700px;
-  margin: auto;
-}
-
-/* ===== Buttons ===== */
+/* Buttons */
 .btn {
   display: inline-block;
   margin-top: 2rem;
@@ -92,7 +75,7 @@ p {
   border-radius: 6px;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -100,51 +83,213 @@ p {
   transform: translateY(-2px);
 }
 
-/* ===== Kontakt ===== */
-.kontakt {
-  padding: 6rem 2rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-form {
-  margin-top: 3rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.8rem;
-  font-size: 1.5rem;
-}
-
-.form-group input[type="checkbox"] {
-  transform: scale(1.3);
-  margin-top: 4px;
-}
-
-input,
-select,
-textarea {
+/* Formular-Elemente */
+input, select, textarea {
   width: 100%;
   padding: 1rem;
   font-size: 1.5rem;
   border: 1px solid var(--gray);
   border-radius: 5px;
+  background: white;
   transition: 0.2s ease;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+}
+
+/* ===== 4. SEKTIONEN ===== */
+
+/* --- Hero Bereich --- */
+.hero {
+  background: linear-gradient(var(--dark-overlay), var(--dark-overlay)),
+              url("https://www.kinoundco.de/media/cache/newsimg/media/Plankton%20-%20%C2%A9%20Netflix.jpg") center/cover no-repeat;
+  color: var(--text-light);
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.agentur-name {
+  font-family: monospace;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  display: inline-block;
+}
+
+/* --- Vorteile (Vorteile-Section) --- */
+.vorteileueberschrift{
+  padding: 6rem 2rem;
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: var(--bg-dark);
+}
+
+.vorteile-wrapper {
+  display: block;
+  text-align: center;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vorteile-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.vorteile {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.vorteile p {
+  position: absolute;
+  margin: 0;
+  padding: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.back { opacity: 0; }
+
+/* Pfeile für Mobile Slider (initial versteckt) */
+.arrow {
+  display: none;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10;
+  color: var(--accent);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+/* --- Prozess (Schritte bis zum Launch) --- */
+.prozess {
+   padding: 6rem 2rem;
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: var(--bg-dark);
+}
+
+.prozess-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.step {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.step:hover { transform: translateY(-5px); }
+
+.number {
+  font-size: 5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent); /* Nur die Umrandung */
+  opacity: 0.5;
+  margin-bottom: -20px; /* Schiebt die Zahl hinter den Text für einen Layer-Effekt */
+}
+
+/* ================================================================
+   KONTAKTFORMULAR STYLES
+   ================================================================ */
+
+.kontakt {
+  padding: 6rem 2rem;
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: var(--bg-dark);
+}
+
+/* --- Überschriften im Formular --- */
+.kontakt h3 {
+  text-align: center;
+  color: var(--gray);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.anfrage {
+  border-radius: 0; /* Reset, falls vorher auf 100% */
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  margin-bottom: 4rem;
+}
+
+/* --- Formular-Layout --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Zwei Spalten Layout */
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Standard: Label über dem Input */
+}
+
+/* --- Eingabefelder (Inputs, Select, Textarea) --- */
+.form-group label {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-light);
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+  background-color: #222; /* Leicht heller als der Background */
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1); /* Subtiler Ring um das Feld */
+  transform: translateY(-1px); /* Leichtes Anheben */
 }
 
 textarea {
@@ -152,7 +297,44 @@ textarea {
   resize: vertical;
 }
 
-/* ===== Footer ===== */
+/* --- SPEZIALFALL: Checkbox (Nebeneinander) --- */
+/* Wir wählen die .form-group aus, die eine Checkbox enthält */
+.form-group:has(input[type="checkbox"]) {
+  flex-direction: row;      /* Schiebt Checkbox und Label nebeneinander */
+  align-items: flex-start;  /* Ausrichtung oben an der ersten Zeile */
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.form-group input[type="checkbox"] {
+  width: auto;              /* Verhindert 100% Breite */
+  flex-shrink: 0;           /* Box darf nicht gequetscht werden */
+  transform: scale(1.3);    /* Größe der Box */
+  margin-top: 0.5rem;
+  cursor: pointer;
+  accent-color: var(--primary); /* Färbt die Checkbox Lila */
+}
+
+.form-group:has(input[type="checkbox"]) label {
+  font-weight: normal;      /* Text bei Checkbox weniger dominant */
+  font-size: 1.4rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Links in der Datenschutzerklärung */
+.form-group label a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* --- Responsive Anpassung --- */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr; /* Auf Mobile alles einspaltig */
+  }
+}
+/* --- Footer --- */
 .footer {
   background: linear-gradient(var(--primary), var(--accent));
   text-align: center;
@@ -167,9 +349,7 @@ textarea {
   text-decoration: none;
 }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+.footer a:hover { text-decoration: underline; }
 
 h3 {
   text-align: center;
@@ -182,120 +362,9 @@ label:has(+ input:required)::after {
   color: red;
 }
 
-/* ============================= */
-/* Vorteile Bereich */
-/* ============================= */
+/* ===== 5. RESPONSIVE DESIGN (Media Queries) ===== */
 
-/* Wrapper */
-.vorteileueberschrift{
-  margin: 20px;
-}
-.vorteile-wrapper {
-  display: block;
-  text-align: center;
-  position: relative;
-  margin: 0 auto;
-}
-
-/* Pfeile */
-.arrow {
-  display: none;
-  position: absolute;
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  cursor: pointer;
-  z-index: 10;
-  color: var(--primary);
-}
-
-.arrow.left {
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.arrow.right {
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Vorteile Container Desktop */
-.vorteile-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  justify-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Einzelnes Vorteil-Element */
-.vorteile {
-  width: 250px;
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-radius: 50%;
-  background-color: var(--primary);
-  color: var(--gray);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.vorteile p {
-  position: absolute;
-  margin: 0;
-  padding: 1.5rem;
-  transition: opacity 0.3s ease;
-}
-
-.back {
-  opacity: 0;
-}
-
-
-/*5Schritte bis zum website launch*/
-.prozess {
-padding: 80px 10%;
-background: #111;
-color: white;
-text-align: center;
-}
-
-.prozess-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 30px;
-margin-top: 50px;
-}
-
-.step {
-background: #1c1c1c;
-padding: 30px;
-border-radius: 10px;
-transition: 0.3s;
-}
-
-.step:hover {
-transform: translateY(-5px);
-}
-
-.number {
-font-size: 32px;
-font-weight: bold;
-color: #4da3ff;
-display: block;
-margin-bottom: 10px;
-}
-
-/* Hover Desktop */
+/* Desktop & Hover Effekte */
 @media (min-width: 769px) {
   .vorteile:hover {
     background-color: var(--accent);
@@ -304,38 +373,20 @@ margin-bottom: 10px;
     width: 350px;
   }
 
-  .vorteile:hover .front {
-    opacity: 0;
-  }
-
-  .vorteile:hover .back {
-    opacity: 1;
-  }
+  .vorteile:hover .front { opacity: 0; }
+  .vorteile:hover .back { opacity: 1; }
 }
 
-/* ===== Laptop (2x2 Layout) ===== */
+/* Laptop Layout (2x2) */
 @media (max-width: 1200px) and (min-width: 769px) {
   .vorteile-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* ===== Große Bildschirme >1800px ===== */
-@media (min-width: 1800px) {
-  .vorteile {
-    width: 300px;
-    height: 300px;
-  }
-
-  h2{
-    font-size: 3rem;
-  }
-}
-
-/* ===== Mobile Slider <=768px ===== */
+/* Mobile Layout & Slider (<= 768px) */
 @media (max-width: 768px) {
 
-  /* Wrapper als Flex für Slider */
   .vorteile-wrapper {
     display: flex;
     justify-content: center;
@@ -343,81 +394,83 @@ margin-bottom: 10px;
   }
 
   .vorteile-container {
-    display: flex;              
+    display: flex;
     width: 100%;
     transition: transform 0.4s ease;
     gap: 0;
-    margin: 0;
   }
 
   .vorteile {
     min-width: 100%;      
     flex-shrink: 0;       
-    flex-basis: 100%;     
-    flex-direction: column;
+    display: flex;
+    flex-direction: column; /* Stapelt Front und Back untereinander */
+    justify-content: center;
+    align-items: center;
     height: auto;
-    border-radius: 0;
-    padding: 3rem 2rem;
-    margin: 0;
-    box-sizing: border-box;
+    min-height: 300px;     /* Sorgt für genug Platz im Kreis/Rechteck */
+    border-radius: 0;      /* Optional: Auf Mobile oft besser als Rechteck */
+    padding: 4rem 2rem;
+    background-color: var(--primary);
   }
 
-  .vorteile .front,
-  .vorteile .back {
-    position: static;
+  /* .front wird zur Überschrift */
+  .vorteile .front {
+    position: static;      /* Hebt die absolute Positionierung von Desktop auf */
     opacity: 1;
+    font-weight: bold;
+    font-size: 2.4rem;     /* Größer für Überschriften-Look */
+    margin-bottom: 1.5rem; /* Abstand zum Text darunter */
+    color: var(--accent);  /* Akzentfarbe für die "Überschrift" */
   }
 
-  /* Hover auf Mobile deaktiviert */
+  /* .back wird zum normalen Text darunter */
+  .vorteile .back {
+    position: static;      /* Hebt die absolute Positionierung von Desktop auf */
+    opacity: 1;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    padding: 0;            /* Reset des Paddings für besseren Fluss */
+  }
+
+  /* Hover-Effekte auf Mobile komplett deaktivieren */
   .vorteile:hover {
     transform: none;
-    border-radius: 0;
+    width: 100%;
   }
 
-  .vorteile:hover .front,
-  .vorteile:hover .back {
-    opacity: 1;
-  }
-
-  /* Pfeile sichtbar */
   .arrow {
     display: block;
-    color: var(--accent);
+  }
+}
+
+/* ================================================================
+   ULTRA-WIDE SCREENS (> 1800px)
+   Optimierung für sehr große Monitore, um "Leere" zu vermeiden.
+   ================================================================ */
+
+@media (min-width: 1800px) {
+  .vorteile-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6rem;
+    
+    /* Diese beiden Zeilen sind der Schlüssel zur Symmetrie: */
+    justify-items: center; /* Zentriert die Kreise horizontal in ihrer Spalte */
+    align-items: center;   /* Zentriert sie vertikal (falls nötig) */
+    
+    max-width: 1600px;     /* Begrenzt die Gesamtbreite */
+    margin: 0 auto;        /* Zentriert den gesamten Container auf der Seite */
   }
 
-  h2{
-    font-size: 2rem;
+  .vorteile {
+    width: 300px;
+    height: 300px;
+    /* Entferne hier eventuelle margin-left/right, falls vorhanden */
   }
-  .prozess {
-padding: 80px 10%;
-background: #111;
-color: white;
-text-align: center;
-}
 
-.prozess-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 30px;
-margin-top: 50px;
-}
-
-.step {
-background: #1c1c1c;
-padding: 30px;
-border-radius: 10px;
-transition: 0.3s;
-}
-
-.step:hover {
-transform: translateY(-5px);
-}
-
-.number {
-font-size: 32px;
-font-weight: bold;
-color: #4da3ff;
-display: block;
-margin-bottom: 10px;
-}
+  h2 { 
+    font-size: 3rem; 
+    text-align: center; /* Sicherstellen, dass die Überschrift mittig ist */
+  }
 }
