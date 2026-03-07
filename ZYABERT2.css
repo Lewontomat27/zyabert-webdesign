@@ -1,0 +1,423 @@
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Variablen ===== */
+:root {
+  /* Hauptfarben */
+  --primary: #6a0dad;       /* sattes Lila */
+  --accent: #00bcd4;        /* frisches Türkis */
+  --accent2: #ff4081;       /* knalliges Pink */
+  --highlight: #ffb74d;     /* warme Highlights */
+  
+  /* Neutral / Text */
+  --text-light: #ffffff;
+  --gray: #666666;
+  --bg-light: #f5f5f7;
+
+  /* Overlay */
+  --dark-overlay: rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Basis ===== */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 5px;
+}
+
+p {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== Hero Bereich ===== */
+.hero {
+  background:
+    linear-gradient(var(--dark-overlay), var(--dark-overlay)),
+    url("https://www.kinoundco.de/media/cache/newsimg/media/Plankton%20-%20%C2%A9%20Netflix.jpg") center/cover no-repeat;
+  color: var(--text-light);
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.agentur-name {
+  font-family: monospace;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.anfrage{
+  border-radius: 100%;
+}
+
+.angebot {
+  max-width: 700px;
+  margin: auto;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ===== Kontakt ===== */
+.kontakt {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+form {
+  margin-top: 3rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.form-group input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-top: 4px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  transition: 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: linear-gradient(var(--primary), var(--accent));
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.footer a {
+  display: block;
+  color: var(--text-light);
+  font-size: 1.6rem;
+  margin: 1rem 0;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+h3 {
+  text-align: center;
+  color: var(--gray);
+  font-size: 1.2rem;
+}
+
+label:has(+ input:required)::after {
+  content: " *";
+  color: red;
+}
+
+/* ============================= */
+/* Vorteile Bereich */
+/* ============================= */
+
+/* Wrapper */
+.vorteileueberschrift{
+  margin: 20px;
+}
+.vorteile-wrapper {
+  display: block;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Pfeile */
+.arrow {
+  display: none;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10;
+  color: var(--primary);
+}
+
+.arrow.left {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow.right {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Vorteile Container Desktop */
+.vorteile-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Einzelnes Vorteil-Element */
+.vorteile {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--gray);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.vorteile p {
+  position: absolute;
+  margin: 0;
+  padding: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.back {
+  opacity: 0;
+}
+
+
+/*5Schritte bis zum website launch*/
+.prozess {
+padding: 80px 10%;
+background: #111;
+color: white;
+text-align: center;
+}
+
+.prozess-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.step {
+background: #1c1c1c;
+padding: 30px;
+border-radius: 10px;
+transition: 0.3s;
+}
+
+.step:hover {
+transform: translateY(-5px);
+}
+
+.number {
+font-size: 32px;
+font-weight: bold;
+color: #4da3ff;
+display: block;
+margin-bottom: 10px;
+}
+
+/* Hover Desktop */
+@media (min-width: 769px) {
+  .vorteile:hover {
+    background-color: var(--accent);
+    transform: scale(1.08);
+    border-radius: 20px;
+    width: 350px;
+  }
+
+  .vorteile:hover .front {
+    opacity: 0;
+  }
+
+  .vorteile:hover .back {
+    opacity: 1;
+  }
+}
+
+/* ===== Laptop (2x2 Layout) ===== */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .vorteile-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== Große Bildschirme >1800px ===== */
+@media (min-width: 1800px) {
+  .vorteile {
+    width: 300px;
+    height: 300px;
+  }
+
+  h2{
+    font-size: 3rem;
+  }
+}
+
+/* ===== Mobile Slider <=768px ===== */
+@media (max-width: 768px) {
+
+  /* Wrapper als Flex für Slider */
+  .vorteile-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .vorteile-container {
+    display: flex;              
+    width: 100%;
+    transition: transform 0.4s ease;
+    gap: 0;
+    margin: 0;
+  }
+
+  .vorteile {
+    min-width: 100%;      
+    flex-shrink: 0;       
+    flex-basis: 100%;     
+    flex-direction: column;
+    height: auto;
+    border-radius: 0;
+    padding: 3rem 2rem;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .vorteile .front,
+  .vorteile .back {
+    position: static;
+    opacity: 1;
+  }
+
+  /* Hover auf Mobile deaktiviert */
+  .vorteile:hover {
+    transform: none;
+    border-radius: 0;
+  }
+
+  .vorteile:hover .front,
+  .vorteile:hover .back {
+    opacity: 1;
+  }
+
+  /* Pfeile sichtbar */
+  .arrow {
+    display: block;
+    color: var(--accent);
+  }
+
+  h2{
+    font-size: 2rem;
+  }
+  .prozess {
+padding: 80px 10%;
+background: #111;
+color: white;
+text-align: center;
+}
+
+.prozess-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.step {
+background: #1c1c1c;
+padding: 30px;
+border-radius: 10px;
+transition: 0.3s;
+}
+
+.step:hover {
+transform: translateY(-5px);
+}
+
+.number {
+font-size: 32px;
+font-weight: bold;
+color: #4da3ff;
+display: block;
+margin-bottom: 10px;
+}
+}
