@@ -183,39 +183,173 @@ input:focus, select:focus, textarea:focus {
 .arrow.left { left: 10px; }
 .arrow.right { right: 10px; }
 
-/* --- Prozess (Schritte bis zum Launch) --- */
+/* ================================================================
+   PROZESS TIMELINE (Vertikaler Strahl)
+   ================================================================ */
+
 .prozess {
-   padding: 6rem 2rem;
-  max-width: 90%;
+  padding: 80px 10%;
+  background-color: var(--bg-dark); /* Falls du die Variable nutzt, sonst #111 */
+  color: white;
   margin: 0 auto;
-  background-color: var(--bg-dark);
 }
 
+.prozess-subtitle {
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--gray);
+  font-size: 1.8rem;
+}
+
+/* Der Container braucht Position Relative für die Linie */
 .prozess-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
+/* Die vertikale Linie (der Strahl) */
+@keyframes moveSyncGradient {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+.prozess-container::before {
+  content: "";
+  position: absolute;
+  /* Korrektur: 80px Kreis-Mitte (40px) - halbe Linienbreite (5px) = 35px */
+  left: 35px; 
+  top: 10px;
+  bottom: 10px;
+  width: 10px;
+  
+  /* Der Verlauf muss exakt so auch im Kreis stehen */
+  background: linear-gradient(to bottom, var(--primary), var(--accent), var(--primary));
+  background-size: 100% 300%;
+  
+  /* DER ENTSCHEIDENDE TEIL: Fixiert den Hintergrund am Bildschirm */
+  background-attachment: fixed; 
+  
+  animation: moveSyncGradient 15s linear infinite;
+  
+  /* Dein Leuchteffekt */
+  filter: drop-shadow(0 0 8px var(--primary));
+  z-index: 1;
+}
+
+
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 2px var(--primary)); }
+  50% { filter: drop-shadow(0 0 2px var(--accent)); }
+
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% -100%;
+  }
+  100%{
+    background-position: 0% 0%;
+  }
+}
+
+/* Ein einzelner Schritt */
 .step {
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 10px;
-  transition: 0.3s;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  position: relative;
+  z-index: 2; /* Über der Linie */
+  background: transparent; /* Verhindert Box-Look von vorhin */
+  padding: 0;
 }
 
-.step:hover { transform: translateY(-5px); }
-
+/* Die Zahl im Kreis */
 .number {
-  font-size: 5rem;
-  font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--accent); /* Nur die Umrandung */
-  opacity: 0.5;
-  margin-bottom: -20px; /* Schiebt die Zahl hinter den Text für einen Layer-Effekt */
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  background-color: var(--bg-dark);
+  background-clip: padding-box;
+  border-radius: 50%;
+  border: 4px solid transparent; 
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
 }
 
+
+
+.number::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  z-index: -1;
+  border-radius: 50%;
+  
+  /* MUSS EXAKT GLEICH SEIN WIE OBEN */
+  background: linear-gradient(to bottom, var(--primary), var(--accent), var(--primary));
+  background-size: 100% 300%;
+  background-attachment: fixed; 
+  
+  animation: moveSyncGradient 15s linear infinite;
+}
+/* Text-Bereich rechts von der Zahl */
+.step-content {
+  padding-top: 12px;
+}
+
+.step h3 {
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+  color: var(--text-light);
+  text-align: left; /* Überschreibt globales center */
+}
+
+.step p {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 600px) {
+  .prozess {
+    padding: 50px 5%;
+  }
+  
+  .prozess-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .number {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent); /* Nur die Umrandung */
+  }
+  
+  .step {
+    gap: 10px;
+  }
+}
 /* ================================================================
    KONTAKTFORMULAR STYLES
    ================================================================ */
@@ -283,13 +417,13 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
+  box-shadow: 0 0 8px rgba(10, 185, 54, 1);
 }
 
 input:focus {
+  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1); /* Subtiler Ring um das Feld */
-  transform: translateY(-1px); /* Leichtes Anheben */
+  box-shadow: 0 0 8px rgba(10, 185, 54, 1);
 }
 
 textarea {
@@ -451,17 +585,15 @@ label:has(+ input:required)::after {
 
 @media (min-width: 1800px) {
   .vorteile-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6rem;
-    
-    /* Diese beiden Zeilen sind der Schlüssel zur Symmetrie: */
-    justify-items: center; /* Zentriert die Kreise horizontal in ihrer Spalte */
-    align-items: center;   /* Zentriert sie vertikal (falls nötig) */
-    
-    max-width: 1600px;     /* Begrenzt die Gesamtbreite */
-    margin: 0 auto;        /* Zentriert den gesamten Container auf der Seite */
-  }
+  display: grid;
+  grid-template-columns: repeat(4, 400px);
+  gap: 3rem;
+  justify-items: center;  /* Items innerhalb der Spalten zentrieren */
+  justify-content: center; /* Den gesamten Grid horizontal zentrieren */
+  align-items: center;
+  max-width: 1800px;
+  margin: 0 auto;
+}
 
   .vorteile {
     width: 300px;
