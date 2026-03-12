@@ -1,0 +1,84 @@
+:root {
+    --primary:#6a0dad;
+    --bg:#ffffff;
+    --text:#000;
+}
+
+.dark {
+    --bg:#121212;
+    --text:#eee;
+}
+
+body {
+    font-family: Arial;
+    background: var(--bg);
+    color: var(--text);
+    margin:0;
+}
+
+/* Header */
+
+header {
+    display:flex;
+    justify-content:space-between;
+    padding:20px;
+    background:var(--primary);
+    color:white;
+}
+
+/* Navigation */
+
+#toc {
+    top:100px;
+    left:20px;
+}
+
+#toc a {
+    display:block;
+    margin:10px 0;
+    text-decoration:none;
+}
+
+/* Main */
+
+main {
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+/* Sections */
+
+section {
+    background:#f9f9f9;
+    margin-bottom:40px;
+    padding:20px;
+    border-radius:10px;
+    transition:0.5s;
+}
+
+.dark section {
+    background:#1e1e1e;
+}
+
+/* Footer */
+
+footer {
+    text-align:center;
+    padding:30px;
+    background:#222;
+    color:white;
+}
+
+/* Scroll Animation */
+
+.fade {
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.fade.show {
+    opacity:1;
+    transform:translateY(0);
+}

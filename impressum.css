@@ -1,0 +1,164 @@
+:root {
+  /* Deine Farbstruktur */
+  --primary: #6a0dad;
+  --accent: #00bcd4;
+  --accent2: #ff4081;
+  --highlight: #ffb74d;
+
+  /* Neutralfarben & Text */
+  --text-light: #ffffff;
+  --gray: #666666;
+  --bg-dark: #111111;
+  --bg-light: #f5f5f7;
+  --card-bg: #1c1c1c;
+  --dark-overlay: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.7;
+  margin: 40px;
+  padding: 0;
+}
+
+/* Header mit Verlauf aus deinem Lila und Türkis */
+header {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px var(--dark-overlay);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+/* Der Darkmode Button in Pink als Eyecatcher */
+#darkmode-toggle {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--accent2);
+  color: white;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#darkmode-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+}
+
+/* Inhaltsverzeichnis Styling */
+#toc {
+  max-width: 800px;
+  margin: -30px auto 30px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#toc ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+#toc a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#toc a:hover {
+  color: var(--highlight);
+}
+
+/* Main Content Cards */
+main {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  background: var(--card-bg);
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  border-left: 5px solid var(--primary);
+  transition: border-color 0.3s;
+}
+
+section:hover {
+  border-left-color: var(--accent);
+}
+
+h2 {
+  color: var(--accent);
+  font-size: 1.8rem;
+  width: fit-content;
+  border-bottom: 4px solid var(--accent2);
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+}
+
+/* Adressblock & Kontakt */
+address {
+  font-style: normal;
+  color: var(--bg-light);
+  line-height: 2;
+}
+
+address i {
+  color: var(--accent);
+  margin-right: 10px;
+}
+
+/* Links im Text */
+a {
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent2);
+}
+
+/* Footer passend zum Rest der Seite */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  border-top: 1px solid var(--card-bg);
+  background-color: #0a0a0a;
+}
+
+footer p {
+  color: var(--gray);
+}
+
+/* Scrollbar Anpassung für den "Lila"-Look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
