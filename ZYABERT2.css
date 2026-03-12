@@ -471,21 +471,77 @@ textarea {
 
 /* --- Footer --- */
 .footer {
-  background: linear-gradient(var(--primary), var(--accent));
-  text-align: center;
-  padding: 3rem 1rem;
+  background-color: #1a1a1a; /* Dunkler, professioneller Look */
+  color: #ffffff;
+  padding: 40px 20px 20px;
+  font-family: sans-serif;
 }
 
-.footer a {
-  display: block;
-  color: var(--text-light);
-  font-size: 1.6rem;
-  margin: 1rem 0;
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-box {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+  padding: 0 15px;
+}
+
+.footer-box h3 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #007bff; /* Akzentfarbe */
+  display: inline-block;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 8px;
+}
+
+.footer-box a {
+  font-size: 1.5rem;
+  color: #ccc;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
-.footer a:hover { 
-  text-decoration: underline; 
+.fab, .fas{
+  font-size: 1.5rem;
+}
+.footer-box a:hover {
+  color: #007bff;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+/* Responsive Anpassung */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-box h3 {
+    display: block;
+  }
 }
 
 h3 {
