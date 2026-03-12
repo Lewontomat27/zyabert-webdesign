@@ -197,7 +197,7 @@ input:focus, select:focus, textarea:focus {
 /*==================================================================================================================
   PROZESS TIMELINE (Vertikaler Strahl)
   ================================================================================================================*/
-.prozess {
+#prozess {
   padding: 80px 10%;
   background-color: var(--bg-dark); /* Falls du die Variable nutzt, sonst #111 */
   color: white;
@@ -324,7 +324,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Mobile Anpassung */
 @media (max-width: 600px) {
-  .prozess {
+  #prozess {
     padding: 50px 5%;
   }
 
@@ -654,7 +654,7 @@ label:has(+ input:required)::after {
     justify-content: center;
     text-align: center;
   }
-  .prozess {
+  #prozess {
     max-width: 1400px;
     margin: 0 auto;
     padding: 100px 0;
